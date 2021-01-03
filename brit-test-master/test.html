@@ -1,0 +1,683 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <script>
+function finish() {
+	var ext = '.html';
+	var results = new Array("none","0","5","10","15","25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100");
+	var nums = new Array(21);
+	for(var i = 0; i < nums.length; i++) nums[i] = 0;
+	for(var i = 1; i <= 20; i++) {
+		var q = document.forms['quiz'].elements['question_'+i];
+		if(q[0].type=='checkbox') {
+			var n = 0;
+		}
+		for(var j = 0; j < q.length; j++) {
+			if(q[j].checked) {
+				var a = q[j].value.split(',');
+				for(var k = 0; k < a.length; k++) {
+					nums[a[k]]++;
+				}
+				if(q[j].type=='radio') break;
+				else n++;
+			}
+			if(j == q.length-1&&q[j].type=='radio') {nums[0]++;}
+		}
+		if(q[0].type=='checkbox'&&((document.forms['quiz'].elements['question_'+i+'_min']&&n<document.forms['quiz'].elements['question_'+i+'_min'].value)||(document.forms['quiz'].elements['question_'+i+'_max']&&n>document.forms['quiz'].elements['question_'+i+'_max'].value))) nums[0]++;
+	}
+	var j = new Array('0');
+	for (i in nums) if(nums[i]>nums[j[0]]){j=new Array(''+i);} else if(nums[i]==nums[j[0]])j[j.length] = i;
+	//var o = '';for(var i in results)o+=results[i]+'='+nums[i]+'\n';
+	//alert(o);
+	if(nums[0]!=0) {
+		alert('You missed or incorrectly answered '+nums[0]+' questions!');
+	}
+	else if(j[0]==0) {
+		alert('No result could be determined.');
+	}
+	else {
+		location = results[j[0]]+ext;
+	}
+}
+</script> </head>
+  <body>
+    <form name="quiz" action="javascript:finish();">
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>when did you last have a up of tea</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_1" value="20" type="radio"> Right now
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_1" value="18" type="radio"> today
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_1" value="11" type="radio"> this week
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_1" value="1" type="radio"> i dont drink
+                tea
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>Do you have tea with hot milk or cold</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_2" value="2" type="radio"> Hot milk
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_2" value="20" type="radio"> Cold milk
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>when did you last talk about the weather</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_3" value="18" type="radio"> Today
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_3" value="11" type="radio"> This week
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_3" value="7" type="radio"> in the last 2
+                weeks
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_3" value="2" type="radio"> cant remember
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>tea or coffee </strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_4" value="7" type="radio"> coffee
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_4" value="20" type="radio"> Tea
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>correct way of writing mum/mom</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_5" value="16" type="radio"> mum
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_5" value="2" type="radio"> mom
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>what side of the road do you drive on</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_6" value="20" type="radio"> Left
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_6" value="1" type="radio"> right
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>how far do you live from a pub</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_7" value="19,20" type="radio"> 1 kilometer
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_7" value="15,16" type="radio"> 2 kilometer
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_7" value="9,10" type="radio"> 5 kilometer
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_7" value="6,7" type="radio"> 10 kilometer
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_7" value="1,2" type="radio"> i dont know
+                or further
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>do your scone what do you put on it.</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_8" value="19,20" type="radio"> jam on
+                cream
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_8" value="12,13" type="radio"> cream on
+                jam
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_8" value="1" type="radio"> I don't eat
+                scones
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>have you have curry and chips</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_9" value="2,3" type="radio"> dont like the
+                sound of that
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_9" value="18,19" type="radio"> Love it
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>what is a victory sponge</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_10" value="1,2,3" type="radio"> a dead
+                queen in a cake
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_10" value="13,14,15" type="radio"> sponge
+                jam cream sponge
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_10" value="17,18,19,20" type="radio">
+                sponge cream jam cream sponge
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_10" value="1,2,3" type="radio"> dont like
+                victory sponge
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>do you enjoy fish and chips</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_11" value="13,14,15,16,17,18,19" type="radio">
+                love it
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_11" value="3,4,5,7" type="radio"> hate it
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>Do you say thank you to the bus driver</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_12" value="14,16,18,20" type="radio"> Yes
+                i all ways do
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_12" value="1,2,3,5,7" type="radio"> no
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>you say maths or math</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_13" value="1,2,3,4" type="radio"> math
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_13" value="17,18,19" type="radio"> maths
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>what is the correct date format.</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_14" value="10" type="radio"> yyyy/mm/dd
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_14" value="1,2,3,4" type="radio">
+                mm/dd/yyyy
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_14" value="17,18,19,20" type="radio">
+                dd/mm/yyyy
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>do you put your washing machine in the kitchen</strong>
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_15" value="17,18,19,20" type="radio"> yes
+                i do
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_15" value="1,2,3,4" type="radio"> No i
+                don't
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>did you have a sunday rost within the last 2 weeks</strong>
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_16" value="16,17,18,19,20" type="radio">
+                love a rost
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_16" value="3,4,5,6,7" type="radio"> no i
+                havent
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>did you learn the recorder in primary school</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_17" value="1,2,3" type="radio"> NO </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_17" value="19,20" type="radio"> Yes
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>have you been to a pound shop</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_18" value="20" type="radio"> Today
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_18" value="11" type="radio"> i have
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_18" value="8" type="radio"> no
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>do you have any soreen bread in your house</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_19" value="5" type="radio"> No what is
+                soreen bread
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_19" value="20" type="radio">
+                It is my favourite food
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_19" value="13" type="radio"> i think we
+                have some
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <table width="100%" cellspacing="0" cellpadding="5" border="0">
+        <tbody>
+          <tr>
+            <td width="34%">
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <strong>where dose the story Mary Poppins</strong> </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_20" value="1" type="radio"> New york
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_20" value="20" type="radio"> london
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_20" value="3" type="radio"> livepool
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_20" value="3" type="radio"> Yourkshire
+              </font>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <font face="Verdana, Arial, Helvetica, sans-serif" size="2">
+                <input name="question_20" value="1" type="radio"> Los Angeles
+              </font>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <input value="Finish" type="submit"> <input value="Reset" type="reset">
+    </form>
+  </body>
+</html>
